@@ -116,5 +116,34 @@ namespace KATApotter.Classes.Tests
             //assert
             Assert.AreEqual("$38.00", sc.TotalCost(sc.Cart));
         }
+        [TestMethod()]
+        public void Price2DiffBooks5TotalEquals_48()
+        {
+            //Arrange
+            ShoppingCart sc = new ShoppingCart();
+            //Act
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book1");
+            //assert
+            Assert.AreEqual("$48.00", sc.TotalCost(sc.Cart));
+        }
+        [TestMethod()]
+        public void Price5DiffBooks5TotalEquals_3750()
+        {
+            //Arrange
+            ShoppingCart sc = new ShoppingCart();
+            //Act
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book3");
+            sc.AddItemsToCart("Book4");
+            sc.AddItemsToCart("Book5");
+            //assert
+            Assert.AreEqual("$37.50", sc.TotalCost(sc.Cart));
+        }
+
     }
 }

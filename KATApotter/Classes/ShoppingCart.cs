@@ -8,6 +8,7 @@ namespace KATApotter.Classes
 {
     public class ShoppingCart
     {
+        
         private const double TWENTYFIVEPERCENTDISCOUNT = 37.50; //number of unique books * $10 (Price of Book) * (75%, because they get a 25% discount)
         private const double TWENTYPERCENTDISCOUNT = 32.00; //4 unique books, 20% off (40*.8)
         private const double TENPERCENTDISCOUNT = 27.00; // 3 unique books, 10% off each (30*.9)
@@ -16,8 +17,6 @@ namespace KATApotter.Classes
 
 
         public int[] books = new int[5] { 0, 0, 0, 0, 0 };
-
-        //public Dictionary<string, int> bookDictionary = new Dictionary<string, int>(5);
 
         public List<string> Cart { get; set; } = new List<string>();
 
@@ -31,11 +30,17 @@ namespace KATApotter.Classes
         public string TotalCost(List<string> Cart)
         {
             BookSorter(Cart);
+            priceCalculator();
+            return totalCost.ToString("C");
+        }
+
+        private void priceCalculator()
+        {
             while (books[0] > 0 || books[1] > 0 || books[2] > 0 || books[3] > 0 || books[4] > 0)
             {
                 uniqueBook = 0;
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     if (books[i] >= 1)
                     {
@@ -64,8 +69,8 @@ namespace KATApotter.Classes
                     totalCost += NODISCOUNT;
                 }
             }
-            return totalCost.ToString("C");
         }
+
         private void BookSorter(List<string> Cart)
         {
             foreach (string item in Cart)
@@ -92,12 +97,5 @@ namespace KATApotter.Classes
                 }
             }
         }
-
-
-
-
-
-
     }
-
 }
