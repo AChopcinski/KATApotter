@@ -18,8 +18,8 @@ namespace KATApotter.Classes.Tests
             ShoppingCart sc = new ShoppingCart(); 
             
             //Assert
-            sc.AddItemsToCart("book1");
-            sc.AddItemsToCart("book1");
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book1");
             //ACT
             Assert.AreEqual(2, sc.Cart.Count());
         }
@@ -30,7 +30,7 @@ namespace KATApotter.Classes.Tests
             ShoppingCart sc = new ShoppingCart();
 
             //Act
-            sc.AddItemsToCart("book1");
+            sc.AddItemsToCart("Book1");
             
             //assert
             Assert.AreEqual("$10.00", sc.TotalCost(sc.Cart));
@@ -43,8 +43,8 @@ namespace KATApotter.Classes.Tests
             ShoppingCart sc = new ShoppingCart();
 
             //Act
-            sc.AddItemsToCart("book1");
-            sc.AddItemsToCart("book1");
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book1");
 
             //assert
             Assert.AreEqual("$20.00", sc.TotalCost(sc.Cart));
@@ -57,26 +57,64 @@ namespace KATApotter.Classes.Tests
             ShoppingCart sc = new ShoppingCart();
 
             //Act
-            sc.AddItemsToCart("book1");
-            sc.AddItemsToCart("book2");
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
 
             //assert
             Assert.AreEqual("$19.00", sc.TotalCost(sc.Cart));
 
         }
         [TestMethod()]
-        public void PriceThreeBooksEquals_30()
+        public void PriceThreeBooksEquals_27()
         {
             //Arrange
             ShoppingCart sc = new ShoppingCart();
 
             //Act
-            sc.AddItemsToCart("book1");
-            sc.AddItemsToCart("book2");
-
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book3");
             //assert
-            Assert.AreEqual("$19.00", sc.TotalCost(sc.Cart));
+            Assert.AreEqual("$27.00", sc.TotalCost(sc.Cart));
 
+        }
+        [TestMethod()]
+        public void PriceTwoDiffBooksThreeTotalEquals_29()
+        {
+            //Arrange
+            ShoppingCart sc = new ShoppingCart();
+            //Act
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book1");
+            //assert
+            Assert.AreEqual("$29.00", sc.TotalCost(sc.Cart));
+        }
+        [TestMethod()]
+        public void PriceFourDiffBooksEquals_32()
+        {
+            //Arrange
+            ShoppingCart sc = new ShoppingCart();
+            //Act
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book3");
+            sc.AddItemsToCart("Book4");
+            //assert
+            Assert.AreEqual("$32.00", sc.TotalCost(sc.Cart));
+        }
+        [TestMethod()]
+        public void PriceTwoDiffBooks4TotalEquals_38()
+        {
+            //Arrange
+            ShoppingCart sc = new ShoppingCart();
+            //Act
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            sc.AddItemsToCart("Book1");
+            sc.AddItemsToCart("Book2");
+            //assert
+            Assert.AreEqual("$38.00", sc.TotalCost(sc.Cart));
         }
     }
 }
